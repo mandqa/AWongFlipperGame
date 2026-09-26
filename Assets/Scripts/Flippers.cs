@@ -1,77 +1,89 @@
 using UnityEngine;
+
+using System;
 using UnityEngine.InputSystem;
 
 public class Flippers : MonoBehaviour
 {
-    private HingeJoint2D hinge;
-    public bool rightFlipper;
-    private bool moveUp = false;
+    Rigidbody2D myBody;
+    HingeJoint2D myJoint;
+    InputAction flipButton;
 
-    private float timer = 0f;
+    public InputActionAsset inputActions;
+    public string actionName;
+
+    bool flipping = false;
+
+    public float motorSpeed = 1000f;
+    public float motorForce = 10000f;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        hinge = GetComponent<HingeJoint2D>();
-        hinge.useMotor = false;
+        myBody = GetComponent<Rigidbody2D>();
+        myJoint = GetComponent<HingeJoint2D>();
+        flipButton = inputActions.FindAction(actionName);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.wKey.isPressed)
+        if (flipButton.WasPressedThisFrame())
         {
-            moveUp = true;
-            timer = 0.15f;
+            flipping = true;
         }
+    }
 
-        JointMotor2D motor = hinge.motor;
-        motor.maxMotorTorque = 10000;
+    void FixedUpdate()
+    {
+            JointMotor2D motor = myJoint.motor;
+            motor.maxMotorTorque = motorForce;
 
-        if (moveUp)
-        {
-            if (rightFlipper)
+            if (actionName == "FlipLeft")
             {
-                motor.motorSpeed = 1000;
-            }
-            else
-            {
-                motor.motorSpeed = -1000;
-            }
-            hinge.motor = motor;
-            hinge.useMotor = true;
-
-            timer -= Time.deltaTime;
-
-            if (timer <= 0)
-            {
-                moveUp = false;
-            }
-        }
-        else
-        {
-            if (rightFlipper)
-            {
-                motor.motorSpeed = -1000;
-                hinge.motor = motor;
-                hinge.useMotor = true;
-
-                if (hinge.jointAngle <= -30)
+                if (flipping)
                 {
-                    hinge.useMotor = false;
+                    motor.motorSpeed = -motorSpeed;
+
+                    if (myJoint.jointAngle <= 19f)
+                    {
+                        flipping = false;
+                    }
+                }
+                else
+                {
+                    motor.motorSpeed = motorSpeed;
                 }
             }
-            else
-            {
-                motor.motorSpeed = 1000;
-                hinge.motor = motor;
-                hinge.useMotor = true;
 
-                if (hinge.jointAngle <= -30)
+            if (actionName == "FlipRight")
+            {
+                if (flipping)
                 {
-                    hinge.useMotor = false;
+                    motor.motorSpeed = -motorSpeed;
+
+                    if (myJoint.jointAngle >= 19f)
+                    {
+                        flipping = false;
+                    }
+                }
+                else
+                {
+                    motor.motorSpeed = motorSpeed;
                 }
             }
-        }
+            myJoint.motor = motor;
+            myJoint.useMotor = true;
         
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ball"))
+        {
+            Rigidbody2D ballBody = other.gameObject.GetComponent<Rigidbody2D>();
+            Vector2 contactPosition = other.GetContact(0).normal;
+            ballBody.linearVelocity = -contactPosition * 100f;
+        }
     }
 }
