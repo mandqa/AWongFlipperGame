@@ -8,6 +8,7 @@ public class BallControl : MonoBehaviour
     Rigidbody2D myBody; 
     public InputActionAsset inputActions;
     public Animator launcherAnimator;
+    public Animator gateAnimator;
     float pressTime = 0f;
 
     bool hasLaunched = false;
@@ -57,6 +58,8 @@ public class BallControl : MonoBehaviour
         float launchPower = launchForce * pressTime;
         myBody.AddForce(Vector2.up * launchPower);
         hasLaunched = true;
+        //gate go down
+        gateAnimator.SetBool("Gate", true);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -84,6 +87,8 @@ public class BallControl : MonoBehaviour
             
             //sets is so launcher is back up
             launcherAnimator.SetBool("Charging", false);
+            //gate goes back up
+            gateAnimator.SetBool("Gate", false);
             resetting = false;
     }
 }
