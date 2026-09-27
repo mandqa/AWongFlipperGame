@@ -1,24 +1,24 @@
 using UnityEngine;
 
-public class UsagiTarget : MonoBehaviour
+public class chikawahit : MonoBehaviour
 {
-   Animator anim;
+    Animator myAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        myAnimator = GetComponentInChildren<Animator>();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ball"))
-        {
-            anim.SetTrigger("UsagiTarget");
-        }
-    }
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ball"))
+        {
+            myAnimator.SetTrigger("chikawahit");
+        }
     }
 }

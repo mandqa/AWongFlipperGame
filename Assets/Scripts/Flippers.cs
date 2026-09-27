@@ -45,7 +45,7 @@ public class Flippers : MonoBehaviour
                 {
                     motor.motorSpeed = -motorSpeed;
 
-                    if (myJoint.jointAngle <= 19f)
+                    if (myJoint.jointAngle <= -19f)
                     {
                         flipping = false;
                     }
@@ -60,7 +60,7 @@ public class Flippers : MonoBehaviour
             {
                 if (flipping)
                 {
-                    motor.motorSpeed = -motorSpeed;
+                    motor.motorSpeed = motorSpeed;
 
                     if (myJoint.jointAngle >= 19f)
                     {
@@ -69,21 +69,12 @@ public class Flippers : MonoBehaviour
                 }
                 else
                 {
-                    motor.motorSpeed = motorSpeed;
+                    motor.motorSpeed = -motorSpeed;
                 }
             }
             myJoint.motor = motor;
             myJoint.useMotor = true;
         
     }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ball"))
-        {
-            Rigidbody2D ballBody = other.gameObject.GetComponent<Rigidbody2D>();
-            Vector2 contactPosition = other.GetContact(0).normal;
-            ballBody.linearVelocity = -contactPosition * 100f;
-        }
-    }
+    
 }
