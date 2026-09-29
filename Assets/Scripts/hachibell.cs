@@ -1,24 +1,19 @@
 using UnityEngine;
 
-public class ScoreObject : MonoBehaviour
+public class hachibell : MonoBehaviour
 {
-    public int points = 10;
+    Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        anim = GetComponentInChildren<Animator>();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            ScoreManager scoreManager = FindFirstObjectByType<ScoreManager>();
-
-            if (scoreManager != null)
-            {
-                scoreManager.AddScore(points);
-            }
+            anim.SetTrigger("Ring");
         }
     }
     // Update is called once per frame

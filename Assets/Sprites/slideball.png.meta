@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: b402ac8727acf4e2bbe7cc970c060412
+guid: 3922f0a627cab4a1980ff1bd1717d37d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5367495836710080537
-    second: sprite_sheet (20)_0
-  - first:
-      213: 3974856066519252875
-    second: sprite_sheet (20)_1
+      213: 5168089978833397268
+    second: slideball_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_sheet (20)_0
+      name: slideball_0
       rect:
         serializedVersion: 2
-        x: 271
-        y: 273
-        width: 525
-        height: 689
+        x: 241
+        y: 96
+        width: 590
+        height: 885
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7efe18789f2d285b0800000000000000
-      internalID: -5367495836710080537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_sheet (20)_1
-      rect:
-        serializedVersion: 2
-        x: 1351
-        y: 273
-        width: 525
-        height: 689
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b8fbf266886892730800000000000000
-      internalID: 3974856066519252875
+      spriteID: 416ee9b347eb8b740800000000000000
+      internalID: 5168089978833397268
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6f1c6b03f545b44bda17f1461a3f6d96
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -158,12 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      sprite_sheet (20)_0: -5367495836710080537
-      sprite_sheet (20)_1: 3974856066519252875
+      slideball_0: 5168089978833397268
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
