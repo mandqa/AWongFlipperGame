@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         //if no saved high score - uses 0 instead
-        highScore = PlayerPrefs.GetInt("Highscore", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         //sets reg score on screen
         scoreText.text = "Score: 0";
         //displays highscore
