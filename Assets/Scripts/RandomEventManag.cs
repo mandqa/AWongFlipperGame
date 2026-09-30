@@ -56,6 +56,7 @@ public class RandomEventManag : MonoBehaviour
                 float randomX = Random.Range(bounds.min.x, bounds.max.x);
                 float randomY = Random.Range(bounds.min.y, bounds.max.y);
 
+                //creates target new pos
                 doublePointTarget.transform.position =
                     new Vector3(randomX, randomY, doublePointTarget.transform.position.z);
 
@@ -104,6 +105,7 @@ public class RandomEventManag : MonoBehaviour
             }
             yield return new WaitForSeconds(delay);
 
+            //makes wheel gradually slow down
             delay += 0.03f;
         }
     }

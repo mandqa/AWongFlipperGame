@@ -50,6 +50,7 @@ public class LivesManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    //updates hearts depending on if player has enough lives 
     void UpdateHearts()
     {
         Heart1.sprite = lives >= 3 ? fullHeart : emptyHeart;

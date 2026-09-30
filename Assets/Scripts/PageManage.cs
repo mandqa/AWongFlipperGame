@@ -11,6 +11,8 @@ public class PageManage : MonoBehaviour
     public Sprite page2;
     public Sprite page3;
     
+    public SoundManager soundManager;
+    
     int currentPage = 1;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,6 +52,8 @@ public class PageManage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        soundManager.PlayButton();
     }
     // Update is called once per frame
     void Update()

@@ -17,6 +17,8 @@ public class Flippers : MonoBehaviour
     public float motorSpeed = 1000f;
     public float motorForce = 10000f;
     
+    public SoundManager soundManager;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,6 +33,7 @@ public class Flippers : MonoBehaviour
         if (flipButton.WasPressedThisFrame())
         {
             flipping = true;
+            soundManager.PlayFlipper();
         }
     }
 
@@ -72,6 +75,7 @@ public class Flippers : MonoBehaviour
                     motor.motorSpeed = -motorSpeed;
                 }
             }
+            
             myJoint.motor = motor;
             myJoint.useMotor = true;
         
