@@ -19,6 +19,8 @@ public class RandomEventManag : MonoBehaviour
     public GameObject doublePointTarget;
     public GameObject extraBall;
     public BoxCollider2D eventSpawnArea;
+    
+    public SoundManager soundManager;
 
     int selectedEvent;
     
@@ -103,6 +105,8 @@ public class RandomEventManag : MonoBehaviour
             {
                 eventWheel.sprite = event4;
             }
+
+            soundManager.PlayWheel();
             yield return new WaitForSeconds(delay);
 
             //makes wheel gradually slow down

@@ -12,6 +12,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip flipperSound;
     public AudioClip launchSound;
     
+    public AudioClip wheelSound;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +48,11 @@ public class SoundManager : MonoBehaviour
     public void PlayLaunch()
     {
         audioSource.PlayOneShot(launchSound);
+    }
+
+    public void PlayWheel()
+    {
+        audioSource.PlayOneShot(wheelSound);
     }
     // Update is called once per frame
     void Update()

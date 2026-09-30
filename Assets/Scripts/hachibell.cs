@@ -3,6 +3,7 @@ using UnityEngine;
 public class hachibell : MonoBehaviour
 {
     Animator anim;
+    public SoundManager soundManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +15,7 @@ public class hachibell : MonoBehaviour
         if (other.gameObject.CompareTag("Ball"))
         {
             anim.SetTrigger("Ring");
+            soundManager.PlaySound1();
         }
     }
     // Update is called once per frame

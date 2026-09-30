@@ -10,6 +10,8 @@ public class BallControl : MonoBehaviour
     public Animator launcherAnimator;
     public Animator gateAnimator;
     public LivesManager livesManager;
+    
+    public SoundManager soundManager;
 
     //pos/area ball allowed to launch from
     public Transform launchArea;
@@ -56,6 +58,7 @@ public class BallControl : MonoBehaviour
                     launcherAnimator.SetBool("Charging", false);
                     Launchball();
                 }
+                
         }
     }
 
@@ -66,6 +69,7 @@ public class BallControl : MonoBehaviour
         //push ball up
         myBody.AddForce(Vector2.up * launchPower);
         hasLaunched = true;
+        soundManager.PlayLaunch();
         //reset charge power
         pressTime = 0f;
         //gate go down
