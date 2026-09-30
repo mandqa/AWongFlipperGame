@@ -15,6 +15,10 @@ public class RandomEventManag : MonoBehaviour
     public Sprite event4;
     
     public ScoreManager scoreManager;
+    public LivesManager livesManager;
+    public GameObject doublePointTarget;
+    public GameObject extraBall;
+    public BoxCollider2D eventSpawnArea;
 
     int selectedEvent;
     
@@ -35,8 +39,40 @@ public class RandomEventManag : MonoBehaviour
             yield return new WaitForSeconds(1f);
             //scroll through the events
             yield return StartCoroutine(SpinWheel());
+            
+            //event happens after wheel stops 
+            //add 1k points to first event 
+            if (selectedEvent == 1)
+            {
+                scoreManager.AddScore(1000);
+            }
+            //2x point pop up
+            else if (selectedEvent == 2)
+            {
+                //target only spawns in the bounds of the box collider
+                //random position within the bounds
+                Bounds bounds = eventSpawnArea.bounds;
+
+                float randomX = Random.Range(bounds.min.x, bounds.max.x);
+                float randomY = Random.Range(bounds.min.y, bounds.max.y);
+
+                doublePointTarget.transform.position =
+                    new Vector3(randomX, randomY, doublePointTarget.transform.position.z);
+
+                doublePointTarget.SetActive(true);
+            }
+            else if (selectedEvent == 3)
+            {
+                extraBall.SetActive(true);
+            }
+            else if (selectedEvent == 4)
+            {
+                livesManager.GainLife();
+            }
             //event happens
             yield return new WaitForSeconds(5f);
+            //hide the target
+            doublePointTarget.SetActive(false);
             holeAnimator.Play("coverdown");
             //wait for close anim
             yield return new WaitForSeconds(2f);
@@ -65,12 +101,6 @@ public class RandomEventManag : MonoBehaviour
             else
             {
                 eventWheel.sprite = event4;
-            }
-
-            //add 1k points to first event 
-            if (selectedEvent == 1)
-            {
-                scoreManager.AddScore(1000);
             }
             yield return new WaitForSeconds(delay);
 

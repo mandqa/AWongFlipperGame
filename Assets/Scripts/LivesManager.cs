@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LivesManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class LivesManager : MonoBehaviour
 
     public Sprite emptyHeart;
 
+    public GameObject gameOverCanvas;
     int lives = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,9 +27,29 @@ public class LivesManager : MonoBehaviour
         {
             lives--;
             UpdateHearts();
+
+            if (lives == 0)
+            {
+                gameOverCanvas.SetActive(true);
+            }
         }
     }
 
+    //gain life event
+    public void GainLife()
+    {
+        if (lives < 3)
+        {
+            lives++;
+            UpdateHearts();
+        }
+    }
+
+    //restarts whole game
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     void UpdateHearts()
     {
         Heart1.sprite = lives >= 3 ? fullHeart : emptyHeart;

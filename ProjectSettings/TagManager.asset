@@ -7,6 +7,9 @@ TagManager:
   - Target
   - Ball
   - Reset
+  - LaunchZone
+  - TitleScreen
+  - DangerBall
   layers:
   - Default
   - TransparentFX
@@ -49,6 +52,9 @@ TagManager:
     locked: 0
   - name: frame
     uniqueID: 144992785
+    locked: 0
+  - name: titlescreen
+    uniqueID: 3267221161
     locked: 0
   - name: sprites
     uniqueID: 3371442885

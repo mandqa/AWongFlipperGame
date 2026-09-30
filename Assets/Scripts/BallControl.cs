@@ -13,6 +13,7 @@ public class BallControl : MonoBehaviour
 
     //pos/area ball allowed to launch from
     public Transform launchArea;
+    public bool isExtraBall = false;
     float pressTime = 0f;
 
     bool hasLaunched = false;
@@ -78,7 +79,15 @@ public class BallControl : MonoBehaviour
             resetting = true;
 
             livesManager.LoseLife();
-            Invoke("DangerBall", resetDelay);
+
+            if (isExtraBall)
+            {
+                Invoke("DisableExtraBall", resetDelay);
+            }
+            else
+            {
+                Invoke("DangerBall", resetDelay);
+            }
         }
         //when ball enters launch zone
         if (other.CompareTag("LaunchZone"))
@@ -95,8 +104,17 @@ public class BallControl : MonoBehaviour
             //removes 1 life
             livesManager.LoseLife();
             //hasLaunched = false;
+            
+            //to make sure extra ball doesnt go into reset position launch zone
+            if(isExtraBall)
+            {
+                Invoke("DisableExtraBall", resetDelay);
+            }
+            else
+            {
 
-            Invoke("ResetBall", resetDelay);
+                Invoke("ResetBall", resetDelay);
+            }
         }
     }
 
@@ -150,6 +168,14 @@ public class BallControl : MonoBehaviour
         launcherAnimator.SetBool("Charging", false);
         gateAnimator.SetBool("Gate", false);
 
+        resetting = false;
+    }
+
+    void DisableExtraBall()
+    {
+        myBody.linearVelocity = Vector2.zero;
+        myBody.angularVelocity = 0f;
+        gameObject.SetActive(false);
         resetting = false;
     }
 }
