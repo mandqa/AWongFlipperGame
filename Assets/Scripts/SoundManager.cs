@@ -13,6 +13,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip launchSound;
     
     public AudioClip wheelSound;
+
+    public AudioClip GainLSound;
+    public AudioClip LoseLSound;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,6 +56,16 @@ public class SoundManager : MonoBehaviour
     public void PlayWheel()
     {
         audioSource.PlayOneShot(wheelSound);
+    }
+    
+    public void PlayLoseLife()
+    {
+        audioSource.PlayOneShot(LoseLSound);
+    }
+    
+    public void PlayGainLife()
+    {
+        audioSource.PlayOneShot(GainLSound);
     }
     // Update is called once per frame
     void Update()

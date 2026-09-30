@@ -35,7 +35,7 @@ public class RandomEventManag : MonoBehaviour
         while(true)
         {
             //wait 15 sec
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(25f);
             holeAnimator.Play("coverup");
             //wait for open hole anim
             yield return new WaitForSeconds(1f);

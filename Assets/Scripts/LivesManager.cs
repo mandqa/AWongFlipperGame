@@ -14,6 +14,7 @@ public class LivesManager : MonoBehaviour
     public Sprite emptyHeart;
 
     public GameObject gameOverCanvas;
+    public SoundManager soundManager;
     int lives = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +27,7 @@ public class LivesManager : MonoBehaviour
         if (lives > 0)
         {
             lives--;
+            soundManager.PlayLoseLife();
             UpdateHearts();
 
             if (lives == 0)
@@ -41,6 +43,7 @@ public class LivesManager : MonoBehaviour
         if (lives < 3)
         {
             lives++;
+            soundManager.PlayGainLife();
             UpdateHearts();
         }
     }
